@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录页面</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #fe0d3f, #ffffff); /* 渐变背景 */
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        ul li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        ul li a {
+            color: black;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        ul li a:hover {
+            text-decoration: none;
+        }
+
+        .form {
+            display: none;
+        }
+
+        .form.active {
+            display: block;
+        }
+
+        /* 默认红色链接 */
+        ul li a.active-link {
+            color: red;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: #f7f7f7;
+        }
+
+        input:focus {
+            border-color: #fe0d3f;
+            background-color: #fff;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #fe0d3f;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #fe0d3f;
+        }
+
+        .forgot-password {
+            display: block;
+            margin-top: 10px;
+            color: #fe0d3f;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .input-group button {
+            width: auto;
+            background-color: #f7f7f7;
+            color: #fe0d3f;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            padding: 8px 15px;
+            font-size: 14px;
+        }
+
+        .input-group button:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>登录</h2>
+        <ul>
+            <li><a href="#" onclick="toggleForm('password')">密码登录</a></li>
+            <li><a href="#" onclick="toggleForm('sms')">短信登录</a></li>
+        </ul>
+        
+        <!-- 密码登录 -->
+        <div id="password" class="form active">
+            <div class="input-group">
+                <input type="text" id="account" placeholder="账号名/手机号/邮箱" required>
+                <div id="account-error" class="error"></div>
+            </div>
+            <div class="input-group">
+                <input type="password" id="password-input" placeholder="密码" required>
+                <div id="password-error" class="error"></div>
+            </div>
+            <button type="submit" onclick="validatePasswordLogin()">登录</button>
+            <a href="#" class="forgot-password">忘记密码？</a>
+
+            <div class="register-link">
+                <span>还没有账号？</span>
+                <a href="register.html" class="register">注册账号</a>
+            </div>
+        </div>
+
+        <!-- 短信登录 -->
+        <div id="sms" class="form">
+            <div class="input-group">
+                <input type="text" id="phone" placeholder="手机号" required>
+                <div id="phone-error" class="error"></div>
+            </div>
+            <div class="input-group">
+                <input type="text" id="sms-code" placeholder="请输入验证码" required>
+                <button type="button" onclick="sendSmsCode()">获取验证码</button>
+                <div id="sms-code-error" class="error"></div>
+            </div>
+            <button type="submit" onclick="validateSmsLogin()">登录</button>
+        </div>
+    </div>
+
+    <script>
+        // 页面加载时默认显示密码登录并设置红色
+        window.onload = function() {
+            toggleForm('password');  // 默认显示密码登录表单
+        };
+        
+        function toggleForm(type) {
+            document.querySelectorAll('.form').forEach(form => {
+                form.classList.remove('active');
+            });
+            document.getElementById(type).classList.add('active');
+
+            // 获取所有的链接
+            var links = document.querySelectorAll('ul li a');
+
+            // 遍历所有链接，重置颜色为黑色
+            links.forEach(function(link) {
+                link.style.color = 'black';
+            });
+
+            // 根据点击的链接更改颜色为红色
+            var selectedLink = document.querySelector(`a[href="#"][onclick="toggleForm('${type}')"]`);
+            if (selectedLink) {
+                selectedLink.style.color = 'red';
+            }
+        }
+
+        // 密码登录的验证
+        function validatePasswordLogin() {
+            clearErrors(); // 清除之前的错误信息
+
+            let account = document.getElementById('account').value.trim();
+            let password = document.getElementById('password-input').value.trim();
+
+            let accountValid = validateAccount(account);
+            let passwordValid = validatePassword(password);
+
+            if (!accountValid || !passwordValid) {
+                return false;
+            }
+
+            alert('密码登录验证通过');
+        }
+
+        // 短信登录的验证
+        function validateSmsLogin() {
+            clearErrors(); // 清除之前的错误信息
+
+            let phone = document.getElementById('phone').value.trim();
+            let smsCode = document.getElementById('sms-code').value.trim();
+
+            let phoneValid = validatePhone(phone);
+            let smsCodeValid = validateSmsCode(smsCode);
+
+            if (!phoneValid || !smsCodeValid) {
+                return false;
+            }
+
+            alert('短信登录验证通过');
+        }
+
+        // 发送短信验证码（模拟）
+        function sendSmsCode() {
+            let phone = document.getElementById('phone').value.trim();
+            if (validatePhone(phone)) {
+                alert('验证码已发送');
+            }
+        }
+
+        // 清除所有错误提示
+        function clearErrors() {
+            document.querySelectorAll('.error').forEach(error => {
+                error.innerHTML = '';
+            });
+        }
+
+        // 用户账号验证（可以是账号名、手机号或邮箱）
+        function validateAccount(account) {
+            let accountError = document.getElementById('account-error');
+
+            if (!account) {
+                accountError.textContent = '账号不能为空';
+                accountError.style.color = 'red';
+                return false;
+            }
+
+            // 判断输入的是账号名、手机号还是邮箱
+            if (/^[A-Za-z0-9]{6,8}$/.test(account)) {
+                // 账号名，字母+数字，6到8位
+                return true;
+            } else if (/^1[3-9]\d{9}$/.test(account)) {
+                // 手机号
+                return true;
+            } else if (/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(account)) {
+                // 邮箱
+                return true;
+            } else {
+                accountError.textContent = '账号格式不正确';
+                accountError.style.color = 'red';
+                return false;
+            }
+        }
+
+        // 密码验证
+        function validatePassword(password) {
+            let passwordError = document.getElementById('password-error');
+            let regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()_+={}\[\]:;"'|\\,.<>/?]).{6,10}$/;
+
+            if (!password) {
+                passwordError.textContent = '密码不能为空';
+                passwordError.style.color = 'red';
+                return false;
+            }
+
+            if (!regex.test(password)) {
+                passwordError.textContent = '密码必须包含字母、数字和特殊字符，长度为6到10位';
+                passwordError.style.color = 'red';
+                return false;
+            }
+
+            return true;
+        }
+
+        // 手机号验证
+        function validatePhone(phone) {
+            let phoneError = document.getElementById('phone-error');
+            let regex = /^(13|14|15|16|17|18|19)\d{9}$/;
+
+            if (!phone) {
+                phoneError.textContent = '手机号不能为空';
+                phoneError.style.color = 'red';
+                return false;
+            }
+
+            if (!regex.test(phone)) {
+                phoneError.textContent = '手机号格式不正确';
+                phoneError.style.color = 'red';
+                return false;
+            }
+
+            return true;
+        }
+
+        // 短信验证码验证
+        function validateSmsCode(smsCode) {
+            let smsCodeError = document.getElementById('sms-code-error');
+
+            if (!smsCode) {
+                smsCodeError.textContent = '验证码不能为空';
+                smsCodeError.style.color = 'red';
+                return false;
+            }
+
+            if (!/^\d{6}$/.test(smsCode)) {
+                smsCodeError.textContent = '验证码必须是6位数字';
+                smsCodeError.style.color = 'red';
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+
+</body>
+</html>

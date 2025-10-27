@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册页面</title>
+    <style>
+        /* 通用样式 */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #fe0d3f, #ffffff); /* 渐变背景 */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* 登录容器 */
+        .container {
+            width: 100%;
+            max-width: 350px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* 轻微的阴影效果 */
+        }
+
+        /* 标题样式 */
+        h2 {
+            text-align: center;
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        ol {
+            padding: 0;
+            list-style-type: none;
+            text-align: center;
+        }
+
+        ol li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        /* 高亮当前步骤的样式 */
+        ol li.active a{
+            font-weight: bold;
+            color: #4CAF50;
+            pointer-events: none; /* 禁止点击 */
+            text-decoration: none;
+        }
+
+        ol li.disabled a{
+            font-weight: bold;
+            color: #888;
+            pointer-events: none; /* 禁止点击 */
+            text-decoration: none;
+        }
+
+        ol li.completed a{
+            font-weight: bold;
+            color: #888;
+            pointer-events: none; /* 禁止点击 */
+            text-decoration: none;
+        }
+
+        /* 表单显示切换 */
+        .form {
+            display: none;
+        }
+
+        .form.active {
+            display: block;
+        }
+
+        /* 输入框 */
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f7f7f7;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #fe0d3f;
+            background-color: #fff;
+            outline: none;
+        }
+
+        /* 按钮样式 */
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            background-color: #fe0d3f;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #fe0d3f;
+        }
+
+        /* 获取验证码按钮样式 */
+        .input-group button {
+            width: auto;
+            background-color: #f7f7f7;
+            color: #fe0d3f;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .input-group button:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>注册</h2>
+        <ol>
+            <li id="step1-link" class="active"><a href="javascript:void(0)" onclick="showStep(1)">验证手机号</a></li>
+            <li id="step2-link" class="disabled"><a href="javascript:void(0)" onclick="showStep(2)">填写账号信息</a></li>
+            <li id="step3-link" class="disabled"><a href="javascript:void(0)" onclick="showStep(3)">注册成功</a></li>
+        </ol>
+
+        <!-- 第一步：验证手机号 -->
+        <div id="step1" class="form active">
+            <div class="input-group">
+                <input type="text" id="phone" placeholder="建议使用常用手机号" required>
+                <div id="phone-error" class="error"></div>
+            </div>
+            <div class="input-group">
+                <input type="text" id="sms-code" placeholder="请输入验证码" required>
+                <button type="button" onclick="sendSmsCode()">获取验证码</button>
+                <div id="sms-code-error" class="error"></div>
+            </div>
+            <button type="button" onclick="validatePhoneStep()">下一步</button>
+        </div>
+
+        <!-- 第二步：填写账号信息 -->
+        <div id="step2" class="form">
+            <div class="input-group">
+                <input type="text" id="username" placeholder="账号唯一识别，可用来登录" required>
+                <div id="username-error" class="error"></div>
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" placeholder="建议使用两种或两种以上字符组合" required>
+                <div id="password-error" class="error"></div>
+            </div>
+            <div class="input-group">
+                <input type="password" id="confirm-password" placeholder="请再次输入密码" required>
+                <div id="confirm-password-error" class="error"></div>
+            </div>
+            <div class="input-group">
+                <input type="email" id="email" placeholder="请输入邮箱" required>
+                <div id="email-error" class="error"></div>
+            </div>
+            <div class="input-group">
+                <input type="text" id="email-code" placeholder="请输入邮箱验证码" required>
+                <button type="button" onclick="sendEmailCode()">获取验证码</button>
+                <div id="email-code-error" class="error"></div>
+            </div>
+            <button type="button" onclick="validateAccountInfoStep()">完成注册</button>
+        </div>
+
+        <!-- 第三步：注册成功 -->
+        <div id="step3" class="form">
+            <p>恭喜您注册成功！</p>
+            <button type="button" onclick="window.location.reload()">返回首页</button>
+        </div>
+    </div>
+
+    <script>
+        function showStep(step) {
+            // 获取所有步骤的li元素
+            const steps = document.querySelectorAll('ol li');
+            const forms = document.querySelectorAll('.form');
+    
+            steps.forEach((stepElement, index) => {
+                // 根据步骤更新样式
+                const stepNumber = index + 1;
+
+                if (stepNumber < step) {
+                    // 如果步骤已经完成，添加 completed 类
+                    stepElement.classList.remove('active', 'disabled');
+                    stepElement.classList.add('completed');
+                } else if (stepNumber === step) {
+                    // 当前步骤设置为 active
+                    stepElement.classList.remove('disabled', 'completed');
+                    stepElement.classList.add('active');
+                } else {
+                    // 之后的步骤设置为 disabled
+                    stepElement.classList.remove('active', 'completed');
+                    stepElement.classList.add('disabled');
+                }
+            });
+
+            // 隐藏所有表单
+            forms.forEach(form => {
+                form.classList.remove('active');
+            });
+
+            // 显示当前步骤的表单
+            document.getElementById(`step${step}`).classList.add('active');
+        }
+
+        // 发送短信验证码（模拟）
+        function sendSmsCode() {
+            let phone = document.getElementById('phone').value.trim();
+            if (validatePhone(phone)) {
+                alert('验证码已发送到您的手机');
+            }
+        }
+
+        // 验证手机号和验证码
+        function validatePhoneStep() {
+            clearErrors(); // 清除错误信息
+
+            let phone = document.getElementById('phone').value.trim();
+            let smsCode = document.getElementById('sms-code').value.trim();
+
+            let phoneValid = validatePhone(phone);
+            let smsCodeValid = validateSmsCode(smsCode);
+
+            if (phoneValid && smsCodeValid) {
+                // 验证通过，跳转到第二步
+                showStep(2);
+            }
+        }
+
+        // 验证账号信息
+        function validateAccountInfoStep() {
+            clearErrors(); // 清除错误信息
+
+            let username = document.getElementById('username').value.trim();
+            let password = document.getElementById('password').value.trim();
+            let confirmPassword = document.getElementById('confirm-password').value.trim();
+            let email = document.getElementById('email').value.trim();
+            let emailCode = document.getElementById('email-code').value.trim();
+
+            let usernameValid = validateUsername(username);
+            let passwordValid = validatePassword(password);
+            let confirmPasswordValid = validateConfirmPassword(password, confirmPassword);
+            let emailValid = validateEmail(email);
+            let emailCodeValid = validateEmailCode(emailCode);
+
+            if (usernameValid && passwordValid && confirmPasswordValid && emailValid && emailCodeValid) {
+                // 验证通过，跳转到注册成功页面
+                showStep(3);
+            }
+        }
+
+        // 清除所有错误提示
+        function clearErrors() {
+            document.querySelectorAll('.error').forEach(error => {
+                error.textContent = '';
+            });
+        }
+
+        // 验证手机号格式
+        function validatePhone(phone) {
+            let phoneError = document.getElementById('phone-error');
+            let regex = /^1[3-9]\d{9}$/;
+
+            if (!phone) {
+                phoneError.textContent = '手机号不能为空';
+                phoneError.style.color = 'red';
+                return false;
+            }
+
+            if (!regex.test(phone)) {
+                phoneError.textContent = '手机号格式不正确';
+                phoneError.style.color = 'red';
+                return false;
+            }
+
+            return true;
+        }
+
+        // 验证验证码格式
+        function validateSmsCode(smsCode) {
+            let smsCodeError = document.getElementById('sms-code-error');
+            if (!smsCode) {
+                smsCodeError.textContent = '验证码不能为空';
+                smsCodeError.style.color = 'red';
+                return false;
+            }
+
+            if (!/^\d{6}$/.test(smsCode)) {
+                smsCodeError.textContent = '验证码必须是6位数字';
+                smsCodeError.style.color = 'red';
+                return false;
+            }
+
+            return true;
+        }
+
+        // 验证用户名
+        function validateUsername(username) {
+            let usernameError = document.getElementById('username-error');
+            if (!username) {
+                usernameError.textContent = '账号不能为空';
+                usernameError.style.color = 'red';
+                return false;
+            }
+
+            let regex = /^[A-Za-z0-9\u4e00-\u9fa5]{4,20}$/; // 支持字母、数字、汉字，4到20个字符
+            if (!regex.test(username)) {
+                usernameError.textContent = '账号必须是4到20位字母、数字或汉字';
+                usernameError.style.color = 'red';
+                return false;
+            }
+
+            return true;
+        }
+
+        // 验证密码
+        function validatePassword(password) {
+            let passwordError = document.getElementById('password-error');
+            if (!password) {
+                passwordError.textContent = '密码不能为空';
+                passwordError.style.color = 'red';
+                return false;
+            }
+
+            let regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$/; // 至少包含字母和数字
+            if (!regex.test(password)) {
+                passwordError.textContent = '密码必须包含字母和数字，长度8-20位';
+                passwordError.style.color = 'red';
+                return false;
+            }
+
+            return true;
+        }
+
+        // 验证确认密码
+        function validateConfirmPassword(password, confirmPassword) {
+            let confirmPasswordError = document.getElementById('confirm-password-error');
+            if (confirmPassword !== password) {
+                confirmPasswordError.textContent = '密码不匹配';
+                confirmPasswordError.style.color = 'red';
+                return false;
+            }
+            return true;
+        }
+
+        // 验证邮箱
+        function validateEmail(email) {
+            let emailError = document.getElementById('email-error');
+            const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            if (!email) {
+                emailError.textContent = '邮箱不能为空';
+                emailError.style.color = 'red';
+                return false;
+            }
+            if (!regex.test(email)) {
+                emailError.textContent = '邮箱格式不正确';
+                emailError.style.color = 'red';
+                return false;
+            }
+            return true;
+        }
+
+        // 验证邮箱验证码
+        function validateEmailCode(emailCode) {
+            let emailCodeError = document.getElementById('email-code-error');
+            if (!emailCode) {
+                emailCodeError.textContent = '验证码不能为空';
+                emailCodeError.style.color = 'red';
+                return false;
+            }
+
+            if (!/^\d{6}$/.test(emailCode)) {
+                emailCodeError.textContent = '验证码必须是6位数字';
+                emailCodeError.style.color = 'red';
+                return false;
+            }
+            return true;
+        }
+
+        // 模拟发送邮箱验证码
+        function sendEmailCode() {
+            alert('验证码已发送到您的邮箱');
+        }
+    </script>
+</body>
+</html>

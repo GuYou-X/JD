@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>京东商城主页</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<div class="shortcut">
+    <ul class="fl city">
+        <li><a href="#" class="f10">广东</a></li>
+        <li class="space"></li>
+        <li>
+            <a href="login.html">你好，请登录</a>
+            <a href="register.html" class="f10">免费注册</a>
+        </li>
+        <li class="space"></li>
+        <li> <a href="#">切换至企业版</a></li>
+    </ul>
+    <ul class="fr">
+        <li>
+            <a href="#">我的订单</a>
+        </li>
+        <li class="space"></li>
+        <li class="dropdown">
+            <a href="#">我的京东</a>
+            <i>&#9660;</i>
+            <ul class="dropdown-menu">
+                <li><a href="#">待处理订单</a></li>
+                <li><a href="#">我的问答</a></li>
+                <li><a href="#">降价商品</a></li>
+                <li><a href="#">返修退换货</a></li>
+                <li><a href="#">我的关注</a></li>
+
+                <li><a href="#">我的京豆</a></li>
+                <li><a href="#">我的优惠券</a></li>
+                <li><a href="#">我的白条</a></li>
+                <li><a href="#">我的理财</a></li>
+
+                <li><a href="#">帮助中心</a></li>
+                <li><a href="#">售后服务</a></li>
+                <li><a href="#">在线客服</a></li>
+                <li><a href="#">意见建议</a></li>
+                <li><a href="#">电话客服</a></li>
+                <li><a href="#">客服邮箱</a></li>
+                <li><a href="#">金融咨询</a></li>
+                <li><a href="#">全球售客服</a></li>
+                <li><a href="#">企业客服</a></li>
+                <li><a href="#">港澳台客服</a></li>
+            </ul>
+        </li>
+        <li class="space"></li>
+        <li class="dropdown">
+            <a href="#">企业采购</a>
+            <i>&#9660;</i>
+            <ul class="dropdown-menu">
+                <li><a href="#">企业团购</a></li>
+                <li><a href="#">京东工采</a></li>
+                <li><a href="#">公共采购</a></li>
+                <li><a href="#">京东慧采</a></li>
+                <li><a href="#">京东锦礼</a></li>
+                <li><a href="#">礼品卡</a></li>
+                <li><a href="#">微信企业购</a></li>
+                <li><a href="#">工业品</a></li>
+                <li><a href="#">京东工品汇</a></li>
+                <li><a href="#">企业购专业版</a></li>
+                <li><a href="#">大中型客户采购</a></li>
+            </ul>
+        </li>
+        <li class="space"></li>
+        <li class="dropdown">
+            <a href="#">商家服务</a>
+            <i>&#9660;</i>
+            <ul class="dropdown-menu">
+                <li><a href="#">合作招商</a></li>
+                <li><a href="#">学习中心</a></li>
+                <li><a href="#">商家后台</a></li>
+                <li><a href="#">京麦工作台</a></li>
+                <li><a href="#">商家帮助</a></li>
+                <li><a href="#">规则平台</a></li>
+            </ul>
+        </li>
+        <li class="space"></li>
+        <li class="dropdown">
+            <a href="#">网站导航</a>
+            <i>&#9660;</i>
+            <ul class="dropdown-menu">
+                <li><a href="#">行业频道</a></li>
+                <li><a href="#">生活服务</a></li>
+                <li><a href="#">更多精选</a></li>
+            </ul>
+        </li>
+        <li class="space"></li>
+        <li class="dropdown">
+            <a href="#">手机京东</a>
+            <ul class="dropdown-menu">
+                <li><a href="#">手机京东</a></li>
+                <li><a href="#">关注京东</a></li>
+                <li><a href="#">京东金融客户端</a></li>
+                <li><a href="#">京东健康客户端</a></li>
+                <li><a href="#">关注京东小程序</a></li>
+            </ul>
+        </li>
+        <li class="space"></li>
+        <li>
+            <a href="#">网站无障碍</a>
+        </li>
+    </ul>
+</div>
+
+<script>
+    // 获取所有导航菜单项
+    const menuItems = document.querySelectorAll('.menu-item');
+
+    // 为每个菜单项添加鼠标悬停事件
+    menuItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            // 显示下拉菜单
+            const dropdown = item.querySelector('.dropdown');
+            dropdown.style.display = 'block';
+        });
+
+        item.addEventListener('mouseleave', function() {
+            // 隐藏下拉菜单
+            const dropdown = item.querySelector('.dropdown');
+            dropdown.style.display = 'none';
+        });
+    }); 
+</script>
+
+<header>
+    <div class="w middle">
+        <div class="logo">
+            <h1>
+                <a href="#"></a>  
+            </h1>
+        </div>
+
+        <div class="form">
+            <input type="text" placeholder="欧舒丹洗发水">
+            <button> 搜索 </button>  
+        </div>
+
+        <div class="hotwords">
+            <a href="#" class="f11">京喜自营爆品1元包邮</a>
+            <a href="#" class="f11">iPhone 16 Pro系列加补1000元</a>
+            <a href="#" class="f11">脸部卸妆油</a>
+            <a href="#" class="f11">电脑整机</a>
+            <a href="#" class="f11">空气炸锅</a>
+            <a href="#" class="f11">燃气热水器</a>
+            <a href="#" class="f11">黄金项链</a>
+            <a href="#" class="f11">多功能沙发床</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <ul class="list-item">
+        <li class="nav-item">
+            <a href="">家用电器</a>
+            <div class="sub-nav">
+                <img src="images/i1.png" alt="家电图标">
+            </div>
+        </li>
+        <li class="nav-item">
+            <a href="">手机</a><span>/</span><a href="">运营商</a><span>/</span><a href="">数码</a>
+            <div class="sub-nav">
+                <img src="images/i2.png" alt="手机图标">
+            </div>
+        </li>
+        <li class="nav-item">
+            <a href="">电脑</a><span>/</span><a href="">办公</a>
+            <div class="sub-nav">
+                <img src="images/i3.png" alt="电脑图标">
+            </div>
+        </li>
+        <li class="nav-item">
+            <a href="">家居</a><span>/</span><a href="">家具</a><span>/</span><a href="">家装</a><span>/</span><a href="">厨具</a>
+            <div class="sub-nav">
+                <img src="images/i4.png" alt="家具图标">
+            </div>
+        </li>
+        <li class="nav-item">
+            <a href="">男装</a><span>/</span><a href="">女装</a><span>/</span><a href="">童装</a><span>/</span><a href="">内衣</a>
+            <div class="sub-nav">
+                <img src="images/i5.png" alt="服装图标">
+            </div>
+        </li>
+        <li class="nav-item">
+            <a href="">美妆</a><span>/</span><a href="">个护清洁</a><span>/</span><a href="">宠物</a>
+            <div class="sub-nav">
+                <img src="images/i6.png" alt="美妆图标">
+            </div>
+        </li>
+        <li class="nav-item">
+            <a href="">女鞋</a><span>/</span><a href="">箱包</a><span>/</span><a href="">钟表</a><span>/</span><a href="">珠宝</a>
+            <div class="sub-nav">
+                <img src="images/i7.png" alt="女鞋图标">
+            </div>
+        </li>
+        <li class="nav-item">
+            <a href="">男鞋</a><span>/</span><a href="">运动</a><span>/</span><a href="">户外</a>
+            <div class="sub-nav">
+                <img src="images/i8.png" alt="男鞋图标">
+            </div>
+        </li>
+        <li class="nav-item">
+            <a href="">房产</a><span>/</span><a href="">汽车</a><span>/</span><a href="">汽车用品</a>
+            <div class="sub-nav">
+                <img src="images/i9.png" alt="房产汽车图标">
+            </div>
+        </li>
+        <li class="nav-item">
+            <a href="">母婴</a><span>/</span><a href="">玩具乐器</a>
+            <div class="sub-nav">
+                <img src="images/i10.png" alt="母婴图标">
+            </div>
+        </li>
+        <li class="nav-item">
+            <a href="">食品</a><span>/</span><a href="">酒类</a><span>/</span><a href="">生鲜</a><span>/</span><a href="">特产</a>
+            <div class="sub-nav">
+                <img src="images/i11.png" alt="食品图标">
+            </div>
+        </li>
+        <li class="nav-item">
+            <a href="">艺术</a><span>/</span><a href="">礼品鲜花</a><span>/</span><a href="">农资绿植</a>
+            <div class="sub-nav">
+                <img src="images/i12.png" alt="艺术图标">
+            </div>
+        </li>
+        <li class="nav-item">
+            <a href="">医药保健</a><span>/</span><a href="">计生情趣</a>
+            <div class="sub-nav">
+                <img src="images/i13.png" alt="医药图标">
+            </div>
+        </li>
+        <li class="nav-item">
+            <a href="">图书</a><span>/</span><a href="">文娱</a><span>/</span><a href="">教育</a><span>/</span><a href="">电子书</a>
+            <div class="sub-nav">
+                <img src="images/i14.png" alt="书籍图标">
+            </div>
+        </li>
+        <li class="nav-item">
+            <a href="">机票</a><span>/</span><a href="">酒店</a><span>/</span><a href="">旅游</a><span>/</span><a href="">生活</a>
+            <div class="sub-nav">
+                <img src="images/i15.png" alt="出行图标">
+            </div>
+        </li>
+        <li class="nav-item">
+            <a href="">理财</a><span>/</span><a href="">众筹</a><span>/</span><a href="">白条</a><span>/</span><a href="">保险</a>
+            <div class="sub-nav">
+                <img src="images/i16.png" alt="理财图标">
+            </div>
+        </li>
+        <li class="nav-item">
+            <a href="">安装</a><span>/</span><a href="">维修</a><span>/</span><a href="">清洗</a><span>/</span><a href="">二手</a>
+            <div class="sub-nav">
+                <img src="images/i17.png" alt="装修图标">
+            </div>
+        </li>
+        <li class="nav-item">
+            <a href="">元器件</a><span>/</span><a href="">原材料</a><span>/</span><a href="">五金机电</a>
+            <div class="sub-nav">
+                <img src="images/i18.png" alt="工业品图标">
+            </div>
+        </li>
+    </ul>
+
+    <script>
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                const subNav = item.querySelector('.sub-nav');
+                if (subNav) {
+                    subNav.style.display = 'block';
+                }
+            });
+
+            item.addEventListener('mouseleave', function() {
+                const subNav = item.querySelector('.sub-nav');
+                if (subNav) {
+                    subNav.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+    <div class="navitems">
+        <ul>
+            <li><a href="#" class="f10">早10好价</a></li>
+            <li class="space"></li>
+            <li><a href="#">排行榜</a></li>
+            <li class="space"></li>
+            <li><a href="#">京东企业购</a></li>
+            <li class="space"></li>
+            <li><a href="#">司法拍卖</a></li>
+            <li class="space"></li>
+            <li><a href="#">京东五金城</a></li>
+            <li class="space"></li>
+            <li><a href="#">拍拍二手</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div class="slider">
+            <img src="images/1.jpg" alt="轮播图1" class="active"> 
+            <img src="images/2.jpg" alt="轮播图2"> 
+            <img src="images/3.jpg" alt="轮播图3">
+            <img src="images/4.jpg" alt="轮播图4">
+            <div class="slider-buttons">
+                <span onclick="changeSlide(0)" class="active"></span>
+                <span onclick="changeSlide(1)"></span>
+                <span onclick="changeSlide(2)"></span>
+                <span onclick="changeSlide(4)"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="login-box">
+        <div class="header">
+            <img src="images/login.png" class="sidebar-image" alt="登录图标">
+            <p><strong>Hi~你好</strong></p>
+        </div>
+        <p class="register"><a href="register.html">注册</a></p>
+        <p style="margin-top: 20px;"><strong>登录京东后更多优惠</strong></p>
+        <p style="margin-top: -10px;font-size: 12px;">登陆可享，专属优惠，贴心推荐！</p>
+        <button><a href="login.html" target="_blank" class="f11">立即登录</a></button>
+
+        <div style="display: flex; justify-content: center; gap: 10px; margin: 10px 0;">
+            <img src="images/login1.png" alt="图片1" style="width: 100%; max-width: 150px;">
+            <img src="images/login2.png" alt="图片2" style="width: 100%; max-width: 150px;">
+            <img src="images/login3.png" alt="图片3" style="width: 100%; max-width: 150px;">
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 10px; margin: 10px 0;">
+            <p style="margin-top: 5px;font-size: 14px;">商品搜藏</p>
+            <p style="margin-top: 5px;font-size: 14px;">店铺关注</p>
+            <p style="margin-top: 5px;font-size: 14px;">我的京东</p>
+        </div>
+
+        <ul>
+            <li><a href="#">PLUS会员</a></li>
+            <li><a href="#">企业会员</a></li>
+        </ul>
+    </div>
+
+    <div class="images_box">
+        <div>
+            <p><strong>百亿补贴</strong></p>
+            <img src="images/shop1.jpg" alt="图片1">
+            <p class="f10"><strong>¥16.9</strong></p>
+        </div>
+        <div>
+            <p><strong>京东秒杀</strong></p>
+            <img src="images/shop2.jpg" alt="图片2">
+            <p class="f10"><strong>¥7.6</strong></p>
+        </div>
+        <div>
+            <p><strong>9.9包邮</strong></p>
+            <img src="images/shop3.jpg" alt="图片2">
+            <p class="f10"><strong>¥11.59</strong></p>
+        </div>
+        <div>
+            <p><strong>京东直播</strong></p>
+            <img src="images/shop4.jpg" alt="图片2">
+            <p class="f10"><strong>¥1819.99</strong></p>
+        </div>
+    </div>
+
+    <div class="s_box">
+        <div>
+            <img src="images/s1.png" alt="图片1">
+            <p class="f10"><strong>京豆</strong></p>
+        </div>
+        <div>
+            <img src="images/s2.png" alt="图片2">
+            <p class="f10"><strong>话费</strong></p>
+        </div>
+        <div>
+            <img src="images/s3.png" alt="图片2">
+            <p class="f10"><strong>加油卡</strong></p>
+        </div>
+        <div>
+            <img src="images/s4.png" alt="图片2">
+            <p class="f10"><strong>企业计划购</strong></p>
+        </div>
+        <div>
+            <img src="images/s5.png" alt="图片2">
+            <p class="f10"><strong>政府消费券</strong></p>
+        </div>
+        <div>
+            <img src="images/s6.png" alt="图片2">
+            <p class="f10"><strong>以旧换新</strong></p>
+        </div>
+        <div>
+            <img src="images/s7.png" alt="图片2">
+            <p class="f10"><strong>买贵双倍赔</strong></p>
+        </div>
+        <div>
+            <img src="images/s8.png" alt="图片2">
+            <p class="f10"><strong>企采返E卡</strong></p>
+        </div>
+        <div>
+            <img src="images/s9.png" alt="图片2">
+            <p class="f10"><strong>游戏</strong></p>
+        </div>
+        <div>
+            <img src="images/s10.png" alt="图片2">
+            <p class="f10"><strong>礼品卡</strong></p>
+        </div>
+        <div>
+            <img src="images/s11.png" alt="图片2">
+            <p class="f10"><strong>金条借款</strong></p>
+        </div>
+        <div>
+            <img src="images/s12.png" alt="图片2">
+            <p class="f10"><strong>爱回收</strong></p>
+        </div>
+    </div>
+
+    <div class="product-list">
+        <div class="product-item">
+            <img src="images/product1.jpg" alt="商品1">
+            <div class="product-name">兰蔻菁纯面霜60ml滋润版玻色因抗皱紧致护肤品礼盒生日礼物-直播专享</div>
+            <p class="f10"><strong>¥2890.00</strong></p>
+        </div>
+        <div class="product-item">
+            <img src="images/product2.jpg" alt="商品2">
+            <div class="product-name">男士手表男款正品牌全自动机芯表名牌皮带名表中学生石英男表十大 指挥官款</div>
+            <p class="f10"><strong>¥7.99</strong></p>
+        </div>
+        <div class="product-item">
+            <img src="images/product3.jpg" alt="商品3">
+            <div class="product-name">【白条24期免息】华为 P&mate60/50/40/30/20pro/畅享/nova系列二手手机 华为 Mate 40 RS 保时捷设计</div>
+            <p class="f10"><strong>¥3579.00</strong></p>
+        </div>
+        <div class="product-item">
+            <img src="images/product4.jpg" alt="商品4">
+            <div class="product-name">千年藤制式白床单单件军训床单学生宿舍白床单制式床单内务白床单军人 纯白色床单 制式【115*210】白床单（标准）</div>
+            <p class="f10"><strong>¥16.00</strong></p>
+        </div>
+        <div class="product-item">
+            <img src="images/product5.png" alt="商品5">
+            <div class="product-name">芭比波朗（Bobbi Brown）【刘诗诗同款】吃豆人限定清透舒盈洁肤油400ml 卸妆油卸妆乳</div>
+            <p class="f10"><strong>¥790.00</strong></p>
+        </div>
+        <div class="product-item">
+            <img src="images/product6.jpg" alt="商品6">
+            <div class="product-name">至川软玻璃PVC桌布防水防油防烫餐桌垫透明桌面保护膜茶几水晶板定制 磨砂1.2(母婴无味)圆角磨边 60*120cm</div>
+            <p class="f10"><strong>¥25.80</strong></p>
+        </div>
+        <div class="product-item">
+            <img src="images/product7.jpg" alt="商品6">
+            <div class="product-name">采乐 酮康采乐去屑洗发露洗发液 80ml（丝质顺滑）</div>
+            <p class="f10"><strong>¥18.90</strong></p>
+        </div>
+        <div class="product-item">
+            <img src="images/product8.jpg" alt="商品6">
+            <div class="product-name">华为 HUAWEI Pura70 Pro 二手手机 羽砂黑 12G+512G</div>
+            <p class="f10"><strong>¥4839.00</strong></p>
+        </div>
+        <div class="product-item">
+            <img src="images/product9.jpg" alt="商品6">
+            <div class="product-name">联想拯救者刃7000K政府补贴黑神话悟空游戏主机台式电脑 13代i7-13650HX RTX4060Ti 16G DDR5</div>
+            <p class="f10"><strong>¥7899.00</strong></p>
+        </div>
+        <div class="product-item">
+            <img src="images/product10.jpg" alt="商品6">
+            <div class="product-name">日本uni三菱限定联名Karimoku木柄Jetstream多色圆珠笔机能笔现货 日落橙+钢蓝色 现货速发</div>
+            <p class="f10"><strong>¥411.00</strong></p>
+        </div>
+    </div>
+
+    <!-- 弹出窗口 -->
+    <div id="popup" class="popup" style="display: none;">
+        <p id="popup-text"></p>
+    </div>
+
+    <script>
+        // 获取所有商品项
+        const productItems = document.querySelectorAll('.product-item');
+
+        // 获取弹出窗口元素
+        const popup = document.getElementById('popup');
+        const popupText = document.getElementById('popup-text');
+
+        // 为每个商品项添加事件监听器
+        productItems.forEach(item => {
+            item.addEventListener('mouseenter', function(event) {
+                // 获取商品名称并显示在弹出窗口中
+                const productName = item.querySelector('.product-name').innerText;
+                popupText.innerText = productName;
+
+                // 设置弹出窗口位置（显示在商品项的下方）
+                const itemRect = item.getBoundingClientRect();
+                popup.style.left = `${itemRect.left}px`;
+                popup.style.top = `${itemRect.bottom + 5}px`; // 5px 是弹出窗口与商品底部之间的间距
+
+                // 显示弹出窗口
+                popup.style.display = 'block';
+            });
+
+            item.addEventListener('mouseleave', function() {
+                // 隐藏弹出窗口
+                popup.style.display = 'none';
+            });
+        });
+    </script>
+</main>
+
+<div class="quick-nav">
+    <ul>
+        <li><a href="#"><img src="images/quick1.png" alt="购物车">购物车</a></li>
+        <li><a href="#"><img src="images/quick2.png" alt="我的收藏">我的收藏</a></li>
+        <li><a href="#"><img src="images/quick3.png" alt="客服">客服</a></li>
+        <li><a href="#"><img src="images/quick4.jpg" alt="反馈">反馈</a></li>
+        <li><a href="#" id="back-to-top"><img src="images/quick5.jpg" alt="顶部">回到顶部</a></li>
+    </ul>
+</div>
+
+<script>
+    // 获取回到顶部按钮
+    const backToTopButton = document.getElementById('back-to-top');
+
+    // 当滚动页面时，显示或隐藏回到顶部按钮
+    window.addEventListener('scroll', function () {
+        if (window.scrollY > 200) { // 滚动超过200px显示按钮
+            backToTopButton.style.display = 'block';
+        } else {
+            backToTopButton.style.display = 'none';
+        }
+    });
+
+    // 点击回到顶部按钮时，平滑滚动到顶部
+    backToTopButton.addEventListener('click', function () {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // 平滑滚动效果
+        });
+    });
+
+</script>
+
+<footer>
+    <div class="service">
+        <div class="w">
+            <ul>
+                <li>
+                    <div class="sprite-icons icon-1"></div>
+                    <p>品类齐全，轻松购物</p>
+                </li>
+                <li>
+                    <div class="sprite-icons icon-2"></div>
+                    <p>多仓直发，极速配送</p>
+                </li>
+                <li>
+                    <div class="sprite-icons icon-3"></div>
+                    <p>正品行货，精致服务</p>
+                </li>
+                <li>
+                    <div class="sprite-icons icon-4"></div>
+                    <p>天天低价，畅选无忧</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="w help">
+        <div class="fl">
+            <dl>
+                <dd><strong>购物指南</strong></dd>
+                <dd><a href="#">购物流程</a></dd>
+                <dd><a href="#">会员介绍</a></dd>
+                <dd><a href="#">生活旅行</a></dd>
+                <dd><a href="#">常见问题</a></dd>
+                <dd><a href="#">大家电</a></dd>
+                <dd><a href="#">联系客服</a></dd>
+            </dl>
+            <dl>
+                <dd><strong>配送方式</strong></dd>
+                <dd><a href="#">上门自提</a></dd>
+                <dd><a href="#">211限时达</a></dd>
+                <dd><a href="#">配送服务查询</a></dd>
+                <dd><a href="#">配送费收取标准</a></dd>
+                <dd><a href="#">海外配送</a></dd>
+            </dl>
+            <dl>
+                <dd><strong>支付方式</strong></dd>
+                <dd><a href="#">货到付款</a></dd>
+                <dd><a href="#">在线支付</a></dd>
+                <dd><a href="#">分期付款</a></dd>
+                <dd><a href="#">公司转账</a></dd>
+            </dl>
+            <dl>
+                <dd><strong>售后服务</strong></dd>
+                <dd><a href="#">售后政策</a></dd>
+                <dd><a href="#">价格保护</a></dd>
+                <dd><a href="#">退款说明</a></dd>
+                <dd><a href="#">返修/退换货</a></dd>
+                <dd><a href="#">取消订单</a></dd>
+            </dl>
+            <dl>
+                <dd><strong>特色服务</strong></dd>
+                <dd><a href="#">夺宝岛</a></dd>
+                <dd><a href="#">DIY装机</a></dd>
+                <dd><a href="#">延保服务</a></dd>
+                <dd><a href="#">京东E卡</a></dd>
+                <dd><a href="#">京东通信</a></dd>
+                <dd><a href="#">京东座智能</a></dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="w copyright">
+        <p> 
+            <a href="#">关于我们</a>
+            <span>|</span> 
+            <a href="#">联系我们</a>
+            <span>|</span> 
+            <a href="#">联系客服</a>
+            <span>|</span> 
+            <a href="#">合作招商</a>
+            <span>|</span> 
+            <a href="#">商家帮助</a>
+            <span>|</span> 
+            <a href="#">营销中心</a>
+            <span>|</span> 
+            <a href="#">手机京东</a>
+            <span>|</span> 
+            <a href="#">友情链接</a>
+            <span>|</span> 
+            <a href="#">销售联盟</a>
+            <span>|</span> 
+            <a href="#">京东社区</a>
+            <span>|</span> 
+            <a href="#">风险监测</a>
+            <span>|</span> 
+            <a href="#">质量公告</a>
+            <span>|</span> 
+            <a href="#">隐私政策</a>
+            <span>|</span>
+            <a href="#">京东公益</a>
+            <span>|</span> 
+            <a href="#">Media & IR</a>
+        </p>
+
+        <div>
+            <p>京公网安备 11000002000088号<span>|</span>京ICP证070359号<span>|</span>ICP<span>|</span>药品医疗器械网络服务备案<span>|</span>自营医疗器械经营资质<span>|</span>药品网络交易第三方平台备案凭证<span>|</span>新出发京零 字第大120007号</p>
+            <p>互联网出版许可证编号新出网证(京)字150号<span>|</span>出版物经营许可证<span>|</span>违法和不良信息举报电话：4006561155</p>
+            <p>Copyright © 2004 - 2017  京东JD.com 版权所有<span>|</span>消费者维权热线：4006067733<span>|</span>经营证照<span>|</span>医疗器械第三方平台备案凭证（京）网械平台备字（2023）第00013号<span>|</span>营业执照<span>|</span>增值电信业务经营许可证</p>
+            <p>京东旗下网站：京东支付<span>|</span>京东云<span>|</span>网络内容从业人员违法违规行为举报电话：4006561155-3</p>
+        </div>
+
+        <div class="foot-icon">
+            <a class="mod_copyright_auth_ico mod_copyright_auth_ico_1" href="https://ss.knet.cn/verifyseal.dll?sn=2008070300100000031&amp;ct=df&amp;pa=294005" target="_blank" rel="noopener noreferrer">
+                <img src="images/www.jd.com_(0).png" alt="可信网站信用评估">
+            </a>
+            <a class="mod_copyright_auth_ico mod_copyright_auth_ico_2" href="http://cyberpolice.mps.gov.cn/" target="_blank" rel="noopener noreferrer">
+                <img src="images/www.jd.com_(1).png" alt="网络警察提醒你">
+            </a>
+            <a class="mod_copyright_auth_ico mod_copyright_auth_ico_3" href="https://search.szfw.org/cert/l/CX20120111001803001836" target="_blank" rel="noopener noreferrer">
+                <img src="images/www.jd.com_(2).png" alt="诚信网站">
+            </a>
+            <a class="mod_copyright_auth_ico mod_copyright_auth_ico_4" href="http://www.12377.cn/" target="_blank" rel="noopener noreferrer">
+                <img src="images/www.jd.com_(3).png" alt="中国互联网举报中心">
+            </a>
+            <a class="mod_copyright_auth_ico mod_copyright_auth_ico_5" href="http://www.12377.cn/node_548446.htm" target="_blank" rel="noopener noreferrer">
+                <img src="images/www.jd.com_(4).png" alt="网络举报APP下载">
+            </a>
+            <a class="mod_copyright_auth_ico mod_copyright_auth_ico_6" href="http://www.shdf.gov.cn/shdf/channels/740.html" target="_blank" rel="noopener noreferrer">
+                <img src="images/www.jd.com_(5).png" alt="扫黄打非网举报专区">
+            </a>
+            <a class="mod_copyright_auth_ico mod_copyright_auth_ico_7" href="javascript:;" target="_self" rel="noopener noreferrer">
+                <img src="images/www.jd.com_(6).png" alt="适老化无障碍服务">
+            </a>
+            <a class="mod_copyright_auth_ico mod_copyright_auth_ico_8" href="http://ggfw.cnipa.gov.cn:8010/PatentCMS_Center?fromsite=www.jd.com" target="_blank" rel="noopener noreferrer">
+                <img src="images/www.jd.com_(7).png" alt="国家知识产权公共服务网">
+            </a>
+        </div>
+    </div>
+</footer>
+
+<script>
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slider img');
+const buttons = document.querySelectorAll('.slider-buttons span');
+let interval;
+
+// 切换幻灯片的函数
+function changeSlide(index) {
+    // 隐藏当前幻灯片
+    slides[currentSlide].classList.remove('active');
+    buttons[currentSlide].classList.remove('active');
+
+    // 更新当前幻灯片索引
+    currentSlide = index;
+
+    // 显示新幻灯片
+    slides[currentSlide].classList.add('active');
+    buttons[currentSlide].classList.add('active');
+}
+
+// 自动切换幻灯片
+function startAutoSlide() {
+    interval = setInterval(() => {
+        const nextIndex = (currentSlide + 1) % slides.length;
+        changeSlide(nextIndex);
+    }, 3000); // 每3秒切换
+}
+
+// 停止自动切换
+function stopAutoSlide() {
+    clearInterval(interval);
+}
+
+// 鼠标悬停和点击事件
+buttons.forEach((button, index) => {
+    button.addEventListener('mouseover', () => {
+        stopAutoSlide(); // 停止自动切换
+        changeSlide(index); // 切换到对应幻灯片
+    });
+
+    button.addEventListener('mouseout', startAutoSlide); // 恢复自动切换
+
+    button.addEventListener('click', () => {
+        stopAutoSlide(); // 点击时停止自动切换
+        changeSlide(index); // 切换到对应幻灯片
+    });
+});
+
+// 启动自动切换
+startAutoSlide();
+
+</script>
+
+
+</body>
+</html>

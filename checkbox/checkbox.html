@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>你想要什么样的咖啡？</p>
+    <form action="" method="get">
+        <!-- 单选按钮 name 属性值必须相同，才能组成一个单选组，多中取一。 -->
+        <input type="checkbox" name="coffee" value="strong coffee" checked/>浓咖啡</br>
+        <input type="checkbox" name="coffee" value="with sugar" />加糖</br>
+        <input type="checkbox" name="coffee" value="with milk" />加牛奶</br>
+        <input type="button" onclick="myFunction()" value="选好了" /></br></br>
+        <input type="text" id="order" size="50"></br>
+        <input type="submit" value="提交">
+    </form>
+    <script>
+        function myFunction() {
+            var coffee = document.forms[0];
+            var txt = "";
+            var i;
+            for (i = 0; i < coffee.length; i++) {
+                if (coffee[i].checked) {
+                    txt = txt + coffee[i].value + " ";
+                }
+            }
+            document.getElementById("order").value = "你订购的是 " + txt + "咖啡";
+        }
+    </script>
+
+</body>
+
+</html>
